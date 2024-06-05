@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 import pandas as pd
@@ -17,13 +16,15 @@ soup_page = BeautifulSoup(soup_file, "html.parser")
 
 #print(soup_page)
 
+# Summary
+
 main_table = soup_page.find('div', {'id': 'top-team-stats-summary'})
 
-team_sum_stats_table = main_table.find_all('table', {'id': 'top-team-stats-summary-grid'})
+team_sum_stats_table = main_table.find('table', {'id': 'top-team-stats-summary-grid'})
 
 #print(team_sum_stats_table)
 
-team_sum_stats_header = main_table.find_all('th')
+team_sum_stats_header = team_sum_stats_table.find_all('th')
 
 header_columns = [column_name.text for column_name in team_sum_stats_header]
 """
@@ -37,7 +38,7 @@ for row in team_sum_stats_body:
     
 #print(header_columns)
 
-team_sum_stats_body = main_table.find('tbody').find_all('tr')
+team_sum_stats_body = team_sum_stats_table.find('tbody').find_all('tr')
 
 teams_stats = [[cell_value.text for cell_value in row.find_all('td')] for row in team_sum_stats_body]
 """
@@ -52,6 +53,8 @@ for row in team_sum_stats_body:
     
 #print(teams_stats)
 
-df = pd.DataFrame(teams_stats, columns=header_columns)
+df_sum = pd.DataFrame(teams_stats, columns=header_columns)
 
-print(df.head())
+print(df_sum.head())
+
+df_sum.to_csv('data/summary_data.csv')

@@ -96,7 +96,7 @@ soup_file = wd.page_source
 
 Após esse trecho, já podemos acessar todo o código HTML da página web. Podemos utilizar essa informação para testes, análises ou transformações necessárias. Ainda, podemos usar o WebDriver para preencher formulários, clicar em botões ou navegar entre páginas. Para o projeto atual, irei propor apenas a limpeza da informação não estruturada presente na página e sua transformação em dados estruturados.
 
-Para isso, usaremos as bibliotecas Pandas e BeautifulSoup importadas anteriormente. Caso você tenha dificuldades em acompanhar o código a seguir, indico buscar meu tutorial de[Introdução ao WebScraping](https://dev.to/lisandramelo/recebendo-informacoes-do-transfermarkt-uma-introducao-ao-web-scraping-188o), já que ele introduz cada uma das funções usadas a seguir.
+Para isso, usaremos as bibliotecas Pandas e BeautifulSoup importadas anteriormente. Caso você tenha dificuldades em acompanhar o código a seguir, indico buscar meu tutorial de [Introdução ao WebScraping](https://dev.to/lisandramelo/recebendo-informacoes-do-transfermarkt-uma-introducao-ao-web-scraping-188o), já que ele introduz cada uma das funções usadas a seguir.
 
 A primeira parte do tratamento consiste em passar o código-fonte pelo analisador de HTML da BeautifulSoup.
 

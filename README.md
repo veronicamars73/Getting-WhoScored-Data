@@ -1,4 +1,4 @@
-# Getting Data from WhoScored: Projeto de Web Scraping com Selenium
+# Obtendo Dados do WhoScored: Projeto de Web Scraping com Selenium
 
 Este repositório contém um projeto de Web Scraping para acessar e extrair dados de websites que possuem mecanismos de proteção mais avançados. Utilizamos o Selenium para simular a interação humana com páginas web, permitindo contornar algumas restrições impostas a scripts tradicionais de web scraping.
 

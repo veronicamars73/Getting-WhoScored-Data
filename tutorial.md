@@ -1,3 +1,4 @@
+# Getting Data from WhoScored: Projeto de Web Scraping com Selenium
 
 Há algum tempo, escrevi um [post no dev.to sobre Web Scraping com Python, Beautiful Soup e Requests](https://dev.to/lisandramelo/extracting-data-from-transfermarkt-an-introduction-to-webscraping-2i1c). Embora esse post ofereça uma base sobre o processo de raspagem de dados na maioria dos websites, em alguns casos, essa abordagem não é suficiente. Alguns sites são configurados para evitar o acesso automatizado para raspagem de dados. Em geral, os websites buscam evitar robôs que podem causar sobrecargas nos servidores e usuários que podem obter informações e usá-las sem o devido crédito.
 

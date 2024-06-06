@@ -21,7 +21,7 @@ Antes de começar a produzir o código em si, teremos de garantir que temos toda
 #### Instalação Selenium
 A biblioteca Selenium para Python é uma ferramenta para automatizar interações com navegadores web. O Selenium permite que você escreva scripts em Python que exijam ações em um navegador, como clicar em botões, preencher formulários, navegar entre páginas e extrair dados de sites com proteções anti-crawlers.
 
-Para instalar a biblioteca do [Selenium](https://pypi.org/project/selenium/) você pode usar o [pip](https://pypi.org/project/pip/).
+Para instalar a biblioteca do [Selenium](https://pypi.org/project/selenium/), você pode usar o [pip](https://pypi.org/project/pip/).
 
 ```bash
 pip install selenium
@@ -31,7 +31,7 @@ pip install selenium
 
 A biblioteca BeautifulSoup é uma ferramenta para extrair dados de arquivos HTML e XML. Ela torna a navegação, a busca e a modificação de documentos HTML e XML simples e eficaz.
 
-Para instalar a biblioteca do [BeautifulSoup](https://pypi.org/project/beautifulsoup4/) você também pode usar o [pip](https://pypi.org/project/pip/).
+Para instalar a biblioteca do [BeautifulSoup](https://pypi.org/project/beautifulsoup4/), você também pode usar o [pip](https://pypi.org/project/pip/).
 
 ```bash
 pip install beautifulsoup4
@@ -41,7 +41,7 @@ pip install beautifulsoup4
 
 A biblioteca Pandas oferece estruturas de dados de alto desempenho e funções para manipulação de dados, tornando os processos de análise e ciência de dados mais eficientes e intuitivos.
 
-Para instalar a biblioteca do [Pandas](https://pypi.org/project/pandas/) você também pode usar o [pip](https://pypi.org/project/pip/).
+Para instalar a biblioteca do [Pandas](https://pypi.org/project/pandas/), você também pode usar o [pip](https://pypi.org/project/pip/).
 
 ```bash
 pip install pandas
@@ -71,7 +71,7 @@ from selenium import webdriver
 import pandas as pd
 ```
 
-Com as bibliotecas importadas, podemos configurar nosso web driver para acessar páginas da internet. Para a configuração, o construtor do [Selenium WebDriver](https://www.selenium.dev/documentation/webdriver/browsers/chrome/) precisa de um [serviço - Service](https://www.selenium.dev/documentation/webdriver/drivers/service/), que é usado para configurar e gerenciar o serviço do WebDriver para o Chrome, como especificar o caminho para o executável do ChromeDriver e definir argumentos adicionais; e opções para a instância do navegador Chrome. Dessa forma, no trecho abaixo estamos configurando e instanciando nosso objeto responsável pela obtenção e manipulação da página.
+Com as bibliotecas importadas, podemos configurar nosso web driver para acessar páginas da internet. Para a configuração, o construtor do [Selenium WebDriver](https://www.selenium.dev/documentation/webdriver/browsers/chrome/) precisa de um [serviço - Service](https://www.selenium.dev/documentation/webdriver/drivers/service/), que é usado para configurar e gerenciar o serviço do WebDriver para o Chrome, como especificar o caminho para o executável do ChromeDriver e definir argumentos adicionais; e opções para a instância do navegador Chrome. Dessa forma, no trecho abaixo, estamos configurando e instanciando nosso objeto responsável pela obtenção e manipulação da página.
 
 ```python
 chrome_options = webdriver.chrome.options.Options()
@@ -83,7 +83,7 @@ wd = webdriver.Chrome(service=service_to_pass, options=chrome_options)
 Agora, iremos realizar a ação necessária para obter dados da página que desejamos. Para isso, utilizaremos o método [get()](https://www.selenium.dev/documentation/webdriver/interactions/navigation/) do objeto criado. O método get é responsável por abrir o website. Posteriormente, utilizaremos a propriedade do objeto WebDriver chamada [page_source](https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.page_source), que nos dá acesso ao código-fonte (conteúdo) da página em questão.
 
 
-Além disso, será necessário determinar o endereço da página que se deseja acessar. No projeto, usei o website [www.whoscored.com](https://www.whoscored.com/) especificamente sua página sobre [estatísticas](https://www.whoscored.com/Statistics). Este website possui proteção anti-crawler e, por isso, utilizando-a como teste, podemos notar a efetividade da ferramenta.
+Além disso, será necessário determinar o endereço da página que se deseja acessar. No projeto, usei o website [www.whoscored.com](https://www.whoscored.com/), especificamente sua página sobre [estatísticas](https://www.whoscored.com/Statistics). Este website possui proteção anti-crawler e, por isso, utilizando-a como teste, podemos notar a efetividade da ferramenta.
 
 ![Página Acessada no Tutorial](images/page.png)
 *Página Acessada no Tutorial*
@@ -109,7 +109,7 @@ Agora, iremos buscar os dados que desejamos. No projeto, iremos obter dados da t
 [Tabela a ser Acessada](images/table.png)
 *Tabela a ser Acessada*
 
-Primeiro, acessaremos a tabela existente no HTML pelo seu ID.
+Primeiro, acessaremos a tabela escolhida no HTML pelo seu ID.
 
 ```python
 main_table = soup_page.find('div', {'id': 'top-team-stats-summary'})
@@ -124,7 +124,7 @@ team_sum_stats_header = team_sum_stats_table.find_all('th')
 header_columns = [column_name.text for column_name in team_sum_stats_header]
 ```
 
-Note que o código acima usa [List Comprehension](https://www.w3schools.com/python/python_lists_comprehension.asp), esse tipo de recurso usa uma sintaxe mais limpa e simples para criar listas a partir de outras listas. Dessa forma, o código acima é equivalente ao proposto abaixo.
+Note que o código acima usa [List Comprehension](https://www.w3schools.com/python/python_lists_comprehension.asp). Esse tipo de recurso usa uma sintaxe mais limpa e simples para criar listas a partir de outras listas. Dessa forma, o código acima é equivalente ao proposto abaixo.
 
 ```python
 team_sum_stats_header = team_sum_stats_table.find_all('th')
@@ -142,7 +142,7 @@ team_sum_stats_body = team_sum_stats_table.find('tbody').find_all('tr')
 teams_stats = [[cell_value.text for cell_value in row.find_all('td')] for row in team_sum_stats_body]
 ```
 
-Dessa vez, o código possui duas list comprehensions aninhadas. Talvez pareça complexo, mas na realidade o código proposto faz o mesmo que o código abaixo.
+Dessa vez, o código possui duas list comprehensions aninhadas. Talvez pareça complexo, mas na realidade, o código proposto faz o mesmo que o código abaixo.
 
 ```python
 teams_stats = []
@@ -175,4 +175,4 @@ O código completo do projeto está no meu [repositório do github](https://gith
 
 Espero que o tutorial ajude de alguma forma. Encorajo que implementem suas próprias versões e fico à disposição para ajudar como puder.
 
-Deixo meu e-mail [lisandramelo34@gmail.com](mailto:lisandramelo34@gmail.com) e meu perfil no [LinkedIn](https://www.linkedin.com/in/melo-lisandra) caso desejem entrar em contato de alguma forma.
+Deixo meu e-mail [lisandramelo34@gmail.com](mailto:lisandramelo34@gmail.com) e meu perfil no [LinkedIn](https://www.linkedin.com/in/melo-lisandra) caso desejem entrar em contato.

@@ -1,7 +1,7 @@
 
 Há algum tempo, escrevi um [post no dev.to sobre Web Scraping com Python, Beautiful Soup e Requests](https://dev.to/lisandramelo/extracting-data-from-transfermarkt-an-introduction-to-webscraping-2i1c). Embora esse post ofereça uma base sobre o processo de raspagem de dados na maioria dos websites, em alguns casos, essa abordagem não é suficiente. Alguns sites são configurados para evitar o acesso automatizado para raspagem de dados. Em geral, os websites buscam evitar robôs que podem causar sobrecargas nos servidores e usuários que podem obter informações e usá-las sem o devido crédito.
 
-Apesar dessas proteções, o uso de ferramentas de Web Scraping pode ser essencial para a criação de soluções de automação, testes e análise de dados de aplicações web. Por isso, aprender sobre essas ferramentas é fundamental para o desenvolvimento e análise de websites com proteções anti-crawlers.
+Apesar dessas proteções, o uso de ferramentas de automações em sites podem ser essencial para a criação de soluções de automação, testes e análise de dados de aplicações web. Por isso, aprender sobre essas ferramentas é fundamental para o desenvolvimento, teste e análise de websites com proteções anti-crawlers.
 
 Neste tutorial, vamos explorar como utilizar o Selenium para acessar e extrair dados de websites que possuem mecanismos de proteção mais avançados. O Selenium é ferramenta para  automação de navegadores que pode simular a interação humana com páginas web, permitindo contornar algumas restrições impostas a scripts tradicionais de web scraping.
 
@@ -11,9 +11,9 @@ Antes de começar a produzir o código em si, teremos de garantir que temos toda
 
 - [Python instalado em sua máquina](https://www.python.org/downloads/);
 - Biblioteca Selenium para Python;
-- Biblioteca Beautiful Soup para Python;
+- Biblioteca BeautifulSoup para Python;
 - Biblioteca Pandas para Python;
-- Driver de navegador.
+- WebDriver de navegador.
 
 ### Instalação de Ferramentas Necessárias
 
@@ -26,9 +26,9 @@ Para instalar a biblioteca do [Selenium](https://pypi.org/project/selenium/) voc
 pip install selenium
 ```
 
-#### Instalação Beautiful Soup
+#### Instalação BeautifulSoup
 
-A biblioteca Beautiful Soup é uma ferramenta para extrair dados de arquivos HTML e XML. Ela torna a navegação, a busca e a modificação de documentos HTML e XML simples e eficaz.
+A biblioteca BeautifulSoup é uma ferramenta para extrair dados de arquivos HTML e XML. Ela torna a navegação, a busca e a modificação de documentos HTML e XML simples e eficaz.
 
 Para instalar a biblioteca do [Beautiful Soup](https://pypi.org/project/beautifulsoup4/) você também pode usar o [pip](https://pypi.org/project/pip/).
 
@@ -46,7 +46,7 @@ Para instalar a biblioteca do [Pandas](https://pypi.org/project/pandas/) você t
 pip install pandas
 ```
 
-#### Download Driver
+#### Download WebDriver
 
 A ferramenta do Selenium usa Web Drivers para realizar atividades de automações. Um WebDriver é uma ferramenta usada para automatizar testes em navegadores web. Ele permite que desenvolvedores e testadores controlem um navegador (como Chrome, Firefox ou Safari) programaticamente, simulando a interação de um usuário real. Um dos WebDrivers mais populares é o Selenium WebDriver, que oferece suporte a diversos navegadores e linguagens de programação, como Python, Java e C#.
 
@@ -82,7 +82,7 @@ wd = webdriver.Chrome(service=service_to_pass, options=chrome_options)
 Agora, iremos realizar a ação necessária para obter dados da página que desejamos. Para isso, utilizaremos o método [get()](https://www.selenium.dev/documentation/webdriver/interactions/navigation/) do objeto criado. O método get é responsável por abrir o website. Posteriormente, utilizaremos a propriedade do objeto WebDriver chamada [page_source](https://selenium-python.readthedocs.io/api.html#selenium.webdriver.remote.webdriver.WebDriver.page_source), que nos dá acesso ao código-fonte (conteúdo) da página em questão.
 
 
-Além disso, será necessário determinar o endereço da página que se deseja acessar. No projeto, usei o website [www.whoscored.com](https://www.whoscored.com/) na sua página sobre [estatísticas](https://www.whoscored.com/Statistics). Este website possui proteção anti-crawler e, por isso, utilizando-a como teste, podemos notar a efetividade da ferramenta.
+Além disso, será necessário determinar o endereço da página que se deseja acessar. No projeto, usei o website [www.whoscored.com](https://www.whoscored.com/) especificamente sua página sobre [estatísticas](https://www.whoscored.com/Statistics). Este website possui proteção anti-crawler e, por isso, utilizando-a como teste, podemos notar a efetividade da ferramenta.
 
 ![Página Acessada no Tutorial](images/page.png)
 *Página Acessada no Tutorial*
@@ -95,7 +95,7 @@ soup_file = wd.page_source
 
 Após esse trecho, já podemos acessar todo o código HTML da página web. Podemos utilizar essa informação para testes, análises ou transformações necessárias. Ainda, podemos usar o WebDriver para preencher formulários, clicar em botões ou navegar entre páginas. Para o projeto atual, irei propor apenas a limpeza da informação não estruturada presente na página e sua transformação em dados estruturados.
 
-Para isso, usaremos as bibliotecas Pandas e Beautiful Soup importadas anteriormente. Caso você tenha dificuldades em acompanhar o código a seguir, indico buscar meu tutorial de[Introdução ao WebScraping](https://dev.to/lisandramelo/recebendo-informacoes-do-transfermarkt-uma-introducao-ao-web-scraping-188o), eesse tutorial introduz cada uma das funções usadas a seguir.
+Para isso, usaremos as bibliotecas Pandas e Beautiful Soup importadas anteriormente. Caso você tenha dificuldades em acompanhar o código a seguir, indico buscar meu tutorial de[Introdução ao WebScraping](https://dev.to/lisandramelo/recebendo-informacoes-do-transfermarkt-uma-introducao-ao-web-scraping-188o), já que ele introduz cada uma das funções usadas a seguir.
 
 A primeira parte do tratamento consiste em passar o código-fonte pelo analisador de HTML da Beautiful Soup.
 

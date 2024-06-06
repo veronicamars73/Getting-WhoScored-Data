@@ -1,6 +1,6 @@
 # Obtendo Dados do WhoScored: Projeto de Web Scraping com Selenium
 
-Há algum tempo, escrevi um [post no dev.to sobre Web Scraping com Python, Beautiful Soup e Requests](https://dev.to/lisandramelo/extracting-data-from-transfermarkt-an-introduction-to-webscraping-2i1c). Embora esse post ofereça uma base sobre o processo de raspagem de dados na maioria dos websites, em alguns casos, essa abordagem não é suficiente. Alguns sites são configurados para evitar o acesso automatizado para raspagem de dados. Em geral, os websites buscam evitar robôs que podem causar sobrecargas nos servidores e usuários que podem obter informações e usá-las sem o devido crédito.
+Há algum tempo, escrevi um [post no dev.to sobre Web Scraping com Python, BeautifulSoup e Requests](https://dev.to/lisandramelo/extracting-data-from-transfermarkt-an-introduction-to-webscraping-2i1c). Embora esse post ofereça uma base sobre o processo de raspagem de dados na maioria dos websites, em alguns casos, essa abordagem não é suficiente. Alguns sites são configurados para evitar o acesso automatizado para raspagem de dados. Em geral, os websites buscam evitar robôs que podem causar sobrecargas nos servidores e usuários que podem obter informações e usá-las sem o devido crédito.
 
 Apesar dessas proteções, o uso de ferramentas de automações em sites podem ser essencial para a criação de soluções de automação, testes e análise de dados de aplicações web. Por isso, aprender sobre essas ferramentas é fundamental para o desenvolvimento, teste e análise de websites com proteções anti-crawlers.
 
@@ -31,7 +31,7 @@ pip install selenium
 
 A biblioteca BeautifulSoup é uma ferramenta para extrair dados de arquivos HTML e XML. Ela torna a navegação, a busca e a modificação de documentos HTML e XML simples e eficaz.
 
-Para instalar a biblioteca do [Beautiful Soup](https://pypi.org/project/beautifulsoup4/) você também pode usar o [pip](https://pypi.org/project/pip/).
+Para instalar a biblioteca do [BeautifulSoup](https://pypi.org/project/beautifulsoup4/) você também pode usar o [pip](https://pypi.org/project/pip/).
 
 ```bash
 pip install beautifulsoup4
@@ -62,7 +62,7 @@ Após fazer o download do arquivo compactado correspondente, extraia os arquivos
 
 ## Implementação
 
-O primeiro passo da implementação do nosso projeto será a importação das bibliotecas que usaremos. Para isso, use o trecho de código a seguir. O trecho importa a Beautiful Soup, a biblioteca Selenium e a biblioteca Pandas.
+O primeiro passo da implementação do nosso projeto será a importação das bibliotecas que usaremos. Para isso, use o trecho de código a seguir. O trecho importa a BeautifulSoup, a biblioteca Selenium e a biblioteca Pandas.
 
 ```python
 from bs4 import BeautifulSoup
@@ -96,9 +96,9 @@ soup_file = wd.page_source
 
 Após esse trecho, já podemos acessar todo o código HTML da página web. Podemos utilizar essa informação para testes, análises ou transformações necessárias. Ainda, podemos usar o WebDriver para preencher formulários, clicar em botões ou navegar entre páginas. Para o projeto atual, irei propor apenas a limpeza da informação não estruturada presente na página e sua transformação em dados estruturados.
 
-Para isso, usaremos as bibliotecas Pandas e Beautiful Soup importadas anteriormente. Caso você tenha dificuldades em acompanhar o código a seguir, indico buscar meu tutorial de[Introdução ao WebScraping](https://dev.to/lisandramelo/recebendo-informacoes-do-transfermarkt-uma-introducao-ao-web-scraping-188o), já que ele introduz cada uma das funções usadas a seguir.
+Para isso, usaremos as bibliotecas Pandas e BeautifulSoup importadas anteriormente. Caso você tenha dificuldades em acompanhar o código a seguir, indico buscar meu tutorial de[Introdução ao WebScraping](https://dev.to/lisandramelo/recebendo-informacoes-do-transfermarkt-uma-introducao-ao-web-scraping-188o), já que ele introduz cada uma das funções usadas a seguir.
 
-A primeira parte do tratamento consiste em passar o código-fonte pelo analisador de HTML da Beautiful Soup.
+A primeira parte do tratamento consiste em passar o código-fonte pelo analisador de HTML da BeautifulSoup.
 
 ```python
 soup_page = BeautifulSoup(soup_file, "html.parser")

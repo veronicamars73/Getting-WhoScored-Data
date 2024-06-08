@@ -51,18 +51,26 @@ team_sum_stats_body = team_sum_stats_table.find('tbody').find_all('tr')
 
 
 # Extracting the text from each cell in each row and storing it in a list of lists
-teams_stats = [[cell_value.text for cell_value in row.find_all('td')] for row in team_sum_stats_body]
-
+teams_stats = [
+    [
+        (cell.find('span', {'class': 'yellow-card-box'}).text + '|' + cell.find('span', {'class': 'red-card-box'}).text) if cell_index == 4 else cell.text
+        for cell_index, cell in enumerate(row.find_all('td'))
+    ]
+    for row in team_sum_stats_body
+]
 """
 The list Comprehension above does the same work as the code bellow
 teams_stats = []
 for row in team_sum_stats_body:
     cells = row.find_all('td')
     row_values = []
-    for cell_value in cells:
-        row_values.append(cell_value.text)
+    for cell_index in range(cells):
+        if cell_index == 4:
+            row_values.append((cells[cell_index].find('span', {'class': 'yellow-card-box'})+ '|' 
+             + cells[cell_index].find('span', {'class': 'red-card-box'})))
+        row_values.append(cells[cell_index].text)
     teams_stats.append(row_values)
-    
+
 """
 
 # Creating a DataFrame from the extracted data with appropriate headers  
